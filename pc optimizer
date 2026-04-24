@@ -1,0 +1,52 @@
+@echo off
+color 0A
+title Low-End PC Gaming Optimizer
+
+echo ===============================
+echo   PC GAMING OPTIMIZER STARTED
+echo ===============================
+pause
+
+:: Clear Temp Files
+echo Cleaning TEMP files...
+del /s /f /q %temp%\*.*
+rd /s /q %temp%
+mkdir %temp%
+
+del /s /f /q C:\Windows\Temp\*.*
+rd /s /q C:\Windows\Temp
+mkdir C:\Windows\Temp
+
+:: Clear Prefetch
+echo Cleaning Prefetch...
+del /s /f /q C:\Windows\Prefetch\*.*
+
+:: Flush DNS
+echo Flushing DNS...
+ipconfig /flushdns
+
+:: Free RAM
+echo Freeing RAM...
+echo off | clip
+
+:: Stop unnecessary services
+echo Stopping unnecessary services...
+net stop "SysMain"
+net stop "DiagTrack"
+
+:: Set performance mode
+echo Setting performance mode...
+powercfg -setactive SCHEME_MIN
+
+:: Disable animations (basic tweak)
+echo Disabling animations...
+reg add "HKCU\Control Panel\Desktop" /v MenuShowDelay /t REG_SZ /d 0 /f
+
+:: Clear Recycle Bin
+echo Emptying Recycle Bin...
+rd /s /q C:\$Recycle.Bin
+
+echo ===============================
+echo   OPTIMIZATION COMPLETE ✅
+echo ===============================
+pause
