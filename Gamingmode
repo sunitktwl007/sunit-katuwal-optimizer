@@ -1,0 +1,13 @@
+@echo off
+color 0C
+title Gaming Mode
+
+echo Activating Gaming Mode...
+
+net stop "SysMain"
+net stop "DiagTrack"
+
+powercfg -setactive SCHEME_MIN
+
+echo Gaming Mode Activated 🚀
+pause
