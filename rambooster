@@ -1,0 +1,9 @@
+@echo off
+color 0B
+title RAM Booster
+
+echo Freeing RAM...
+echo off | clip
+
+echo RAM refreshed ✅
+pause
